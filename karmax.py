@@ -14,7 +14,7 @@ def maxProfit(price, start, end):
          for j in range(i+1, end+1):
             
              if (price[j] > price[i]):
-                 print(price[i],price[j])
+                #  print(price[i],price[j])
               
                  curr_profit = price[j] - price[i] +maxProfit(price,start, i - 1)+maxProfit(price,j + 1, end);
  
@@ -24,14 +24,14 @@ def maxProfit(price, start, end):
      return profit;
  
      
-excelPath=r'C:\Users\Ufuk\Desktop\Berfin Works\PythonWorks\KaganVeri\AnadoluEFEStumhisse.xlsx'
+excelPath=r'C:\Users\kagan\Desktop\Desktop\School Documents\algorithms\shareAnalysis\share_analysis\AnadoluEFEStumhisse.xlsx'
 excelFile = pd.read_excel(excelPath,sheet_name="isyatirim")
 
 tarih=excelFile['Tarih']
 price=excelFile['Kapanis(TL)']
 
 
-print("Original array: ",price)
+# print("Original array: ",price)
 print("Maximum Values: ",np.argmax(price))
 print("Minimum Values: ",np.argmin(price))
 
