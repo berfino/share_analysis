@@ -30,21 +30,20 @@ excelFile = pd.read_excel(excelPath,sheet_name="isyatirim")
 tarih=excelFile['Tarih']
 price=excelFile['Kapanis(TL)']
 
-
+minIndex=np.argmin(price)#Minumum değere sahip anının indexi
+maxIndex=np.argmax(price)#Maximum değere sahip anının indexi
 # print("Original array: ",price)
-print("Maximum Values: ",np.argmax(price))
-print("Minimum Values: ",np.argmin(price))
+print("Minimum Values: ",minIndex,"\nMaximum Values: ",maxIndex)
 
-max_element = np.max(price)
-min_element = np.min(price)
+max_element = np.max(price) #price arrayinin içindeki en büyük sayıyı buluyor
+min_element = np.min(price) #price arrayinin içindeki en küçük sayıyı buluyor
+print('minimum element in the array is: ', min_element,'\nmaximum element in the array is: ', max_element)
+print("Kapanış değerine göre ,\nŞu tarihte Al:",tarih[minIndex],"\nŞu Tarihte Sat:",tarih[maxIndex])
 
-print('maximum element in the array is: ',
-      max_element)
-print('minimum element in the array is: ',
-      min_element)
-indexes = price[np.argmin(price) : np.argmax(price)+1]
-print(indexes)
-dates = tarih[np.argmin(price) : np.argmax(price)+1]
+indexes=price[minIndex : maxIndex+1]#kar maksimizasyonu uygulanmış arrayı tanımlıyoruz.
+print('SubArray=>\n',indexes)
+
+dates = tarih[minIndex : maxIndex+1]
 
 plt.plot(tarih,price,label = "Share Graph")
 plt.plot(dates,indexes, label = "Profit Maximization", color = 'red')
