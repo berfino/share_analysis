@@ -45,6 +45,8 @@ print('SubArray=>\n',indexes)
 
 dates = tarih[minIndex : maxIndex+1]
 
+print("Max Profit=>",maxProfit(price,0,len(price)-1))
+
 plt.plot(tarih,price,label = "Share Graph")
 plt.plot(dates,indexes, label = "Profit Maximization", color = 'red')
 plt.xlabel("tarih")
