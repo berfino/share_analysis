@@ -20,27 +20,28 @@ def maxProfit(arr,len):
             j+=1    
         i+=1
         
-
     return minIndex,maxIndex,profit
 
-excelPath=r'C:\Users\kagan\Desktop\Desktop\School Documents\algorithms\shareAnalysis\share_analysis\AnadoluEFEStumhisse.xlsx'
-excelFile = pd.read_excel(excelPath,sheet_name="isyatirim")
-
-tarih=excelFile['Tarih']
-price=excelFile['Kapanis(TL)']
+efesPath=r'./AnadoluEFES2022.xlsx' #Enter the file name of the data set to be processed in excel format.
+efesFile = pd.read_excel(efesPath,sheet_name="isyatirim")
 
 
-# print(price)
+date=efesFile['Tarih']
+price=efesFile['Kapanış(TL)']
+
+
+
 len=len(price)
 minIndex,maxIndex,profit=maxProfit(price,len)
 
-dates=tarih[minIndex:maxIndex+1]
+dates=date[minIndex:maxIndex+1]
 indexes=price[minIndex:maxIndex+1]
-print("Buy on Day:",tarih[minIndex],"\nSell on Day:",tarih[maxIndex],"\nYour Profit:",profit)
-# print(indexes)
+print("Buy on Day:",date[minIndex],"\nSell on Day:",date[maxIndex],"\nYour Profit:",profit)
+print("Start Index:",minIndex,"-- End Index:",maxIndex)
+print("Start Index Value:",price[minIndex],"-- End Index Value:",price[maxIndex])
 
-plt.plot(tarih,price,label = "Share Graph")
-plt.plot(dates,indexes, label = "Profit Maximization", color = 'red')
+plt.plot(date,price,label = "Share Graph")
+plt.plot(dates,indexes, label = "Profit Maximization", color = 'red',linestyle = 'dashed')
 plt.xlabel("tarih")
 plt.ylabel("price")
 plt.legend()
